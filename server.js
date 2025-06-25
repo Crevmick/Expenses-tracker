@@ -17,7 +17,12 @@ const __dirname = path.dirname(__filename);
 
 
 //importing routes
-
+import signinRoute from './Routes/signin.js';
+import signupRoute from './Routes/signup.js';
+import categoryRoute from './Routes/CategotyRoute.js';
+import expensesRoute from './Routes/ExpensesRoute.js';
+import otpRoute from './Routes/otpRoute.js';
+import forgetPasswordRoute from './Routes/forgetPasswordRoute.js';
 
 
 //initializing express app
@@ -33,7 +38,14 @@ app.use(morgan('dev'));
 //serving static files
 app.use(express.static(path.join(__dirname, 'public')));
 
-//app.use('/api', apiRoutes); // Uncomment and replace with your actual routes  
+
+// API routes
+app.use('/api/auth', signinRoute);
+app.use('/api/auth', signupRoute);
+app.use('/api/otp', otpRoute);
+app.use('/api/password', forgetPasswordRoute);
+app.use('/api/categories', categoryRoute);
+app.use('/api/expenses', expensesRoute);
 
 
 
